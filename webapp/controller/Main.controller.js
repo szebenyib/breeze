@@ -6,8 +6,11 @@ sap.ui.define([
 	"use strict";
 
 	return BaseController.extend("breeze.controller.Main", {
-			onInit: function() {
-				Models.loadACDevicesModel();
-			}
+		oACDevicesModel: new JSONModel(),
+		onInit: function() {
+			Models.loadACDevicesModel(this);
+		},
+		onACDevicesModelLoaded: function() {
+		}
 	});
 });

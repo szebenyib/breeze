@@ -10,8 +10,10 @@ sap.ui.define([
 			return oModel;
 		},
 		loadACDevicesModel: function(oDelegate) {
-			var oModel = new JSONModel();
-			oModel.loadData("config/ACDevices.json", {}, false);
+			oModel.attachRequestCompleted(function() {
+				oDelegate.onACDevicesModelLoaded();
+			});
+			oModel.loadData("config/ACDevices.json");
 		}
 	};
 });
