@@ -1,17 +1,40 @@
 <mvc:View
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:sem="sap.m.semantic"
+	xmlns:core="sap.ui.core"
 	xmlns="sap.m"
 	controllerName="breeze.controller.Main" displayBlock="true">
-	<Page title="{i18n>KPIOverviewTitle}">
+	<Page title="{i18n>MainTitle}">
 		<headerContent>
-			<Image
-				class="audiLogo"
-				src="img/audi_logo_2016_flat_black.png"
-				alt="{i18n>AudiLogo}" />
 		</headerContent>
 		<content>
-
+			<SplitContainer>
+				<masterPages>
+					<sem:MasterPage
+						title="{i18n>MasterPageTitle}">
+						<sem:sort>
+							<sem:SortSelect
+								change="onSelectionChange"
+								items="{
+									path: '/ACDevices',
+									sorter: {
+										path: 'Name'
+									}
+								}">
+								<core:Item
+									key="{id}"
+									text="{deviceName}" />
+							</sem:SortSelect>
+						</sem:sort>
+					</sem:MasterPage>
+				</masterPages>
+				<detailPages>
+					<sem:DetailPage
+						title="{i18n>DetailPageTitle}">
+					</sem:DetailPage>
+				</detailPages>
+			</SplitContainer>
 		</content>
 	</Page>
 </mvc:View>
