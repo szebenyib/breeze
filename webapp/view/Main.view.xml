@@ -1,0 +1,17 @@
+<mvc:View
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	controllerName="breeze.controller.Main" displayBlock="true">
+	<Page title="{i18n>KPIOverviewTitle}">
+		<headerContent>
+			<Image
+				class="audiLogo"
+				src="img/audi_logo_2016_flat_black.png"
+				alt="{i18n>AudiLogo}" />
+		</headerContent>
+		<content>
+
+		</content>
+	</Page>
+</mvc:View>
