@@ -11,6 +11,7 @@ sap.ui.define([
 			Models.loadACDevicesModel(this);
 		},
 		onACDevicesModelLoaded: function() {
+			this.getView().setModel(this.oACDevicesModel, "ACDevicesModel");
 		}
 	});
 });

@@ -10,10 +10,10 @@ sap.ui.define([
 			return oModel;
 		},
 		loadACDevicesModel: function(oDelegate) {
-			oModel.attachRequestCompleted(function() {
+			oDelegate.oACDevicesModel.attachRequestCompleted(function() {
 				oDelegate.onACDevicesModelLoaded();
 			});
-			oModel.loadData("config/ACDevices.json");
+			oDelegate.oACDevicesModel.loadData("config/ACDevices.json");
 		}
 	};
 });
