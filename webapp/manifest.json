@@ -8,16 +8,6 @@
 		"description": "{{appDescription}}",
 		"applicationVersion": {
 			"version": "1.0.0"
-		},
-		"dataSources": {
-			"mainService": {
-				"uri": "/sap/opu/odata/sap/VWK/AHM_MON_UI5_SRV/",
-				"type": "OData",
-				"settings": {
-					"odataVersion": "2.0",
-					"localUri": "localService/metadata.xml"
-				}
-			}
 		}
 	},
 	"sap.ui": {
@@ -67,10 +57,6 @@
 				"settings": {
 					"bundleName": "breeze.i18n.i18n"
 				}
-			},
-			"": {
-				"dataSource": "mainService",
-				"preload": true
 			}
 		},
 		"routing": {

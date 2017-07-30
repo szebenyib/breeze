@@ -10,7 +10,7 @@ sap.ui.define([
 					iOriginalBusyDelay = this.getView()
 						.getBusyIndicatorDelay();
 			oViewModel = new JSONModel({
-				busy: true,
+				busy: false,
 				delay: 0
 			});
 			this.setModel(oViewModel, "appView");
@@ -19,10 +19,6 @@ sap.ui.define([
 				oViewModel.setProperty("/delay",
 				iOriginalBusyDelay);
 			};
-			this.getOwnerComponent()
-				.getModel()
-				.metadataLoaded()
-				.then(fnSetAppNotBusy);
 		// apply content density mode to root view
 			/*definethis.getView()
 							.addStyleClass(this.getOwnerComponent()
