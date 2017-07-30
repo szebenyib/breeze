@@ -1,0 +1,9 @@
+[{
+	"id": "dev001",
+	"location": "livingroom",
+	"type": "fujitsu"
+}, {
+	"id": "dev002",
+	"location": "bedroom",
+	"type": "fujitsu"
+}]
