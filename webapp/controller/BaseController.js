@@ -33,6 +33,12 @@ sap.ui.define([
 				.setModel(oModel, sName);
 		},
 		/**
+		 * Helper for this.getView().byId()
+		 */
+		byId: function(sId) {
+			return this.getView().byId(sId);
+		},
+		/**
 		 * Getter for the resource bundle.
 		 * @public
 		 * @returns {sap.ui.model.resource.ResourceModel} the resourceModel of the component
@@ -47,10 +53,7 @@ sap.ui.define([
 		 * @return {boolean} true if the device is a phone
 		 */
 		isDevicePhone: function() {
-			return this.getOwnerComponent()
-				.getModel("device")
-				.getProperty("/system")
-				.phone;
+			return sap.ui.Device.system.phone;
 		}
 	});
 });
