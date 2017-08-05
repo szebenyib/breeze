@@ -1,8 +1,8 @@
 <mvc:View
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:sem="sap.m.semantic"
 	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
 	xmlns="sap.m"
 	controllerName="breeze.controller.Main" displayBlock="true">
 	<Page>
@@ -36,8 +36,64 @@
 					showNavButton="true"
 					navButtonPress="onNavButtonPressed">
 					<Label
-
 						text="{SelDevModel>/id}" />
+					<l:HorizontalLayout>
+						<l:VerticalLayout>
+							<core:Icon
+								src="sap-icon://temperature"
+								class="lastCommandIcon" />
+							<Label
+								id="lastTemperature"
+								text="24°C" 
+								class="lastCommandLabel" />
+						</l:VerticalLayout>
+						<l:VerticalLayout>
+							<core:Icon
+								src="sap-icon://settings"
+								class="lastCommandIcon" />
+							<Label
+								id="lastMode"
+								text="Auto"
+								class="lastCommandLabel" />
+						</l:VerticalLayout>
+						<l:VerticalLayout>
+							<core:Icon
+								src="sap-icon://performance"
+								class="lastCommandIcon" />
+							<Label
+								id="lastFan"
+								text="Auto"
+								class="lastCommandLabel" />
+						</l:VerticalLayout>
+						<l:VerticalLayout>
+							<core:Icon
+								src="sap-icon://globe"
+								class="lastCommandIcon" />
+							<CheckBox
+								id="lastEco" />
+						</l:VerticalLayout>
+						<l:VerticalLayout>
+							<core:Icon
+								src="sap-icon://step"
+								class="lastCommandIcon" />
+							<CheckBox
+								id="lastPowerful" />
+						</l:VerticalLayout>
+						<l:VerticalLayout>
+							<core:Icon
+								src="sap-icon://sort"
+								class="lastCommandIcon" />
+							<CheckBox
+								id="lastVane" />
+						</l:VerticalLayout>
+						<l:VerticalLayout>
+							<core:Icon
+								src="sap-icon://repost"
+								class="lastCommandIcon" />
+							<CheckBox
+								id="lastSwing" />
+						</l:VerticalLayout>
+					</l:HorizontalLayout>
 				</Page>
 			</detailPages>
 		</SplitContainer>
