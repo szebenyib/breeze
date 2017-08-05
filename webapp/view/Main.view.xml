@@ -6,7 +6,8 @@
 	xmlns="sap.m"
 	controllerName="breeze.controller.Main" displayBlock="true">
 	<Page>
-		<SplitContainer>
+		<SplitContainer
+			id="splitContainer">
 			<masterPages>
 				<Page
 					id="masterPage"
@@ -19,16 +20,25 @@
 							items="{
 								path: 'ACDevicesModel>/'
 							}">
-							<StandardListItem
-								description="{ACDevicesModel>id}"
-								title="{ACDevicesModel>location}" />
+							<DisplayListItem
+								label="{ACDevicesModel>location}"
+								value="{ACDevicesModel>id}"
+								type="Navigation"
+								press="onDevicePressed"/>
 						</List>
 					</content>
 				</Page>
 			</masterPages>
 			<detailPages>
 				<Page
-					title="{i18n>DetailPageTitle}" />
+					id="detailPage"
+					title="{i18n>DetailPageTitle}"
+					showNavButton="true"
+					navButtonPress="onNavButtonPressed">
+					<Label
+
+						text="{SelDevModel>/id}" />
+				</Page>
 			</detailPages>
 		</SplitContainer>
 	</Page>
