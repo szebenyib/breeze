@@ -7,3 +7,16 @@
 	margin-top: 1rem;
 	margin-left: 0.4rem;
 }
+
+.segmentedButton .sapMSegBBtn {
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+}
+
+.segmentedButton {
+	width: 100%;
+}
+
+.toggleButton {
+	width: 100%;
+}

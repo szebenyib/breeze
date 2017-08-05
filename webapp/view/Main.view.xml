@@ -5,13 +5,15 @@
 	xmlns:l="sap.ui.layout"
 	xmlns="sap.m"
 	controllerName="breeze.controller.Main" displayBlock="true">
-	<Page>
+	<Page
+		id="page"
+		title="{i18n>Title}">
 		<SplitContainer
 			id="splitContainer">
 			<masterPages>
 				<Page
 					id="masterPage"
-					title="{i18n>MainTitle}">
+					title="{i18n>Devices}">
 					<headerContent>
 					</headerContent>
 					<content>
@@ -32,68 +34,220 @@
 			<detailPages>
 				<Page
 					id="detailPage"
-					title="{i18n>DetailPageTitle}"
+					title="{SelDevModel>/location}"
 					showNavButton="true"
 					navButtonPress="onNavButtonPressed">
-					<Label
-						text="{SelDevModel>/id}" />
-					<l:HorizontalLayout>
-						<l:VerticalLayout>
-							<core:Icon
-								src="sap-icon://temperature"
-								class="lastCommandIcon" />
-							<Label
-								id="lastTemperature"
-								text="24°C" 
-								class="lastCommandLabel" />
-						</l:VerticalLayout>
-						<l:VerticalLayout>
-							<core:Icon
-								src="sap-icon://settings"
-								class="lastCommandIcon" />
-							<Label
-								id="lastMode"
-								text="Auto"
-								class="lastCommandLabel" />
-						</l:VerticalLayout>
-						<l:VerticalLayout>
-							<core:Icon
-								src="sap-icon://performance"
-								class="lastCommandIcon" />
-							<Label
-								id="lastFan"
-								text="Auto"
-								class="lastCommandLabel" />
-						</l:VerticalLayout>
-						<l:VerticalLayout>
-							<core:Icon
-								src="sap-icon://globe"
-								class="lastCommandIcon" />
-							<CheckBox
-								id="lastEco" />
-						</l:VerticalLayout>
-						<l:VerticalLayout>
-							<core:Icon
-								src="sap-icon://step"
-								class="lastCommandIcon" />
-							<CheckBox
-								id="lastPowerful" />
-						</l:VerticalLayout>
-						<l:VerticalLayout>
-							<core:Icon
-								src="sap-icon://sort"
-								class="lastCommandIcon" />
-							<CheckBox
-								id="lastVane" />
-						</l:VerticalLayout>
-						<l:VerticalLayout>
-							<core:Icon
-								src="sap-icon://repost"
-								class="lastCommandIcon" />
-							<CheckBox
-								id="lastSwing" />
-						</l:VerticalLayout>
-					</l:HorizontalLayout>
+					<l:Grid
+						defaultIndent="L3 M2 S0"
+						defaultSpan="L6 M8 S12">
+						<Label
+							text="{i18n>LastCommandSent}" />
+						<l:HorizontalLayout>
+							<l:VerticalLayout>
+								<core:Icon
+									src="sap-icon://log"
+									class="lastCommandIcon" />
+								<CheckBox
+									id="lastOnOff" />
+							</l:VerticalLayout>
+							<l:VerticalLayout>
+								<core:Icon
+									src="sap-icon://temperature"
+									class="lastCommandIcon" />
+								<Label
+									id="lastTemperature"
+									text="{SelDevModel>/lastCommand/Temperature}"
+									class="lastCommandLabel" />
+							</l:VerticalLayout>
+							<l:VerticalLayout>
+								<core:Icon
+									src="sap-icon://settings"
+									class="lastCommandIcon" />
+								<Label
+									id="lastMode"
+									text="{SelDevModel>/lastCommand/Mode}"
+									class="lastCommandLabel" />
+							</l:VerticalLayout>
+							<l:VerticalLayout>
+								<core:Icon
+									src="sap-icon://performance"
+									class="lastCommandIcon" />
+								<Label
+									id="lastFan"
+									text="{SelDevModel>/lastCommand/Fan}"
+									class="lastCommandLabel" />
+							</l:VerticalLayout>
+							<l:VerticalLayout>
+								<core:Icon
+									src="sap-icon://globe"
+									class="lastCommandIcon" />
+								<CheckBox
+									id="lastEco"
+									value="{SelDevModel>/lastCommand/Eco}" />
+							</l:VerticalLayout>
+							<l:VerticalLayout>
+								<core:Icon
+									src="sap-icon://step"
+									class="lastCommandIcon" />
+								<CheckBox
+									id="lastPowerful"
+									value="{SelDevModel>/lastCommand/Powerful}" />
+							</l:VerticalLayout>
+							<l:VerticalLayout>
+								<core:Icon
+									src="sap-icon://sort"
+									class="lastCommandIcon" />
+								<CheckBox
+									id="lastVane"
+									value="{SelDevModel>/lastCommand/Vane}" />
+							</l:VerticalLayout>
+							<l:VerticalLayout>
+								<core:Icon
+									src="sap-icon://repost"
+									class="lastCommandIcon" />
+								<CheckBox
+									id="lastSwing"
+									value="{SelDevModel>/lastCommand/Swing}" />
+							</l:VerticalLayout>
+						</l:HorizontalLayout>
+					</l:Grid>
+					<l:Grid
+						defaultIndent="L3 M2 S0"
+						defaultSpan="L3 M4 S3">
+						<Label
+							text="{i18n>NewCommandToBeSent}" />
+						<StepInput
+							value="24"
+							min="18"
+							max="30"
+							step="1">
+							<layoutData>
+								<l:GridData
+									indent="L5 M4 S0"
+									span="L2 M4 S12" />
+							</layoutData>
+						</StepInput>
+						<SegmentedButton
+							id="mode"
+							selectedKey="auto"
+							width="100%"
+							class="segmentedButton">
+							<layoutData>
+								<l:GridData
+									span="L6 M8 S12" />
+							</layoutData>
+							<items>
+								<SegmentedButtonItem
+									text="{i18n>Auto}"
+									key="auto" />
+								<SegmentedButtonItem
+									text="{i18n>Cool}"
+									key="cool" />
+								<SegmentedButtonItem
+									text="{i18n>Dry}"
+									key="dry" />
+								<SegmentedButtonItem
+									text="{i18n>Fan}"
+									key="fan" />
+								<SegmentedButtonItem
+									text="{i18n>Heat}"
+									key="heat" />
+							</items>
+						</SegmentedButton>
+						<SegmentedButton
+							id="fan"
+							selectedKey="auto"
+							width="100%"
+							class="segmentedButton">
+							<layoutData>
+								<l:GridData
+									span="L6 M8 S12" />
+							</layoutData>
+							<items>
+								<SegmentedButtonItem
+									text="{i18n>Auto}"
+									key="auto" />
+								<SegmentedButtonItem
+									text="{i18n>High}"
+									key="high" />
+								<SegmentedButtonItem
+									text="{i18n>Med}"
+									key="med" />
+								<SegmentedButtonItem
+									text="{i18n>Low}"
+									key="low" />
+								<SegmentedButtonItem
+									text="{i18n>Quiet}"
+									key="quiet" />
+							</items>
+						</SegmentedButton>
+						<Label
+							text="{i18n>Powerful}"
+							labelFor="powerful" >
+							<layoutData>
+								<l:GridData
+									span="L1 M3 S3" />
+							</layoutData>
+						</Label>
+						<Switch
+							id="powerful">
+							<layoutData>
+								<l:GridData
+									indent="L0 M0 S0"
+									span="L3 M3 S3" />
+							</layoutData>
+						</Switch>
+						<Label
+							text="{i18n>Economy}"
+							labelFor="economy" >
+							<layoutData>
+								<l:GridData
+									linebreakL="true"
+									linebreakM="true"
+									span="L1 M3 S3" />
+							</layoutData>
+						</Label>
+						<Switch
+							id="economy">
+							<layoutData>
+								<l:GridData
+									indent="L0 M0 S0"
+									span="L3 M3 S3" />
+							</layoutData>
+						</Switch>
+						<ToggleButton
+							id="stepVane"
+							text="{i18n>StepVane}"
+							class="toggleButton">
+							<layoutData>
+								<l:GridData
+									span="L3 M4 S6" />
+							</layoutData>
+						</ToggleButton>
+						<ToggleButton
+							id="swing"
+							text="{i18n>Swing}"
+							class="toggleButton">
+							<layoutData>
+								<l:GridData
+									indent="L0 M0 S0"
+									span="L3 M4 S6" />
+							</layoutData>
+						</ToggleButton>
+					</l:Grid>
+				<footer>
+					<OverflowToolbar>
+						<ToolbarSpacer />
+							<Button
+								text="{i18n>TurnOff}"
+								type="Reject"
+								class="turnOffButton"/>
+							<Button
+								text="{i18n>TurnOnAndSend}"
+								type="Accept"
+								class="sendCommandButton"/>
+					</OverflowToolbar>
+				</footer>
 				</Page>
 			</detailPages>
 		</SplitContainer>
