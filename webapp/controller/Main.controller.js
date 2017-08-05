@@ -9,6 +9,8 @@ sap.ui.define([
 		oACDevicesModel: new JSONModel(),
 		onInit: function() {
 			Models.loadACDevicesModel(this);
+			this.byId("masterPage").setShowHeader(!this.isDevicePhone());
+			this.byId("detailPage").setShowHeader(!this.isDevicePhone());
 			this.byId("detailPage").setShowNavButton(this.isDevicePhone());
 		},
 		onACDevicesModelLoaded: function() {
