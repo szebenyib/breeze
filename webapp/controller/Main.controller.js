@@ -15,6 +15,11 @@ sap.ui.define([
 		},
 		onACDevicesModelLoaded: function() {
 			this.setModel(this.oACDevicesModel, "ACDevicesModel");
+			var oDeviceList = this.byId("deviceList");
+			if (oDeviceList.getItems()) {
+				oDeviceList.setSelectedItemById(
+					oDeviceList.getItems()[0].sId);
+			}
 		},
 		onDevicePressed: function(oEvent) {
 			var sDevId = oEvent.getSource().getValue();

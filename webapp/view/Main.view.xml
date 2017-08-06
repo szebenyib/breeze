@@ -18,7 +18,9 @@
 					</headerContent>
 					<content>
 						<List
+							id="deviceList"
 							change="onSelectionChange"
+							mode="SingleSelectMaster"
 							items="{
 								path: 'ACDevicesModel>/'
 							}">
