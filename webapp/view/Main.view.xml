@@ -19,7 +19,7 @@
 					<content>
 						<List
 							id="deviceList"
-							change="onSelectionChange"
+							selectionChange="onSelectionChange"
 							mode="SingleSelectMaster"
 							items="{
 								path: 'ACDevicesModel>/'
@@ -27,8 +27,7 @@
 							<DisplayListItem
 								label="{ACDevicesModel>location}"
 								value="{ACDevicesModel>id}"
-								type="Navigation"
-								press="onDevicePressed"/>
+								type="Navigation"/>
 						</List>
 					</content>
 				</Page>
@@ -50,7 +49,8 @@
 									src="sap-icon://log"
 									class="lastCommandIcon" />
 								<CheckBox
-									id="lastOnOff" />
+									id="lastOnOff"
+									selected="{SelDevModel>/lastCommand/on}"/>
 							</l:VerticalLayout>
 							<l:VerticalLayout>
 								<core:Icon
@@ -58,7 +58,7 @@
 									class="lastCommandIcon" />
 								<Label
 									id="lastTemperature"
-									text="{SelDevModel>/lastCommand/Temperature}"
+									text="{SelDevModel>/lastCommand/temperature}"
 									class="lastCommandLabel" />
 							</l:VerticalLayout>
 							<l:VerticalLayout>
@@ -67,7 +67,7 @@
 									class="lastCommandIcon" />
 								<Label
 									id="lastMode"
-									text="{SelDevModel>/lastCommand/Mode}"
+									text="{SelDevModel>/lastCommand/mode}"
 									class="lastCommandLabel" />
 							</l:VerticalLayout>
 							<l:VerticalLayout>
@@ -76,7 +76,7 @@
 									class="lastCommandIcon" />
 								<Label
 									id="lastFan"
-									text="{SelDevModel>/lastCommand/Fan}"
+									text="{SelDevModel>/lastCommand/fan}"
 									class="lastCommandLabel" />
 							</l:VerticalLayout>
 							<l:VerticalLayout>
@@ -85,7 +85,7 @@
 									class="lastCommandIcon" />
 								<CheckBox
 									id="lastEco"
-									value="{SelDevModel>/lastCommand/Eco}" />
+									selected="{SelDevModel>/lastCommand/eco}" />
 							</l:VerticalLayout>
 							<l:VerticalLayout>
 								<core:Icon
@@ -93,7 +93,7 @@
 									class="lastCommandIcon" />
 								<CheckBox
 									id="lastPowerful"
-									value="{SelDevModel>/lastCommand/Powerful}" />
+									selected="{SelDevModel>/lastCommand/powerful}" />
 							</l:VerticalLayout>
 							<l:VerticalLayout>
 								<core:Icon
@@ -101,7 +101,7 @@
 									class="lastCommandIcon" />
 								<CheckBox
 									id="lastVane"
-									value="{SelDevModel>/lastCommand/Vane}" />
+									selected="{SelDevModel>/lastCommand/stepVane}" />
 							</l:VerticalLayout>
 							<l:VerticalLayout>
 								<core:Icon
@@ -109,7 +109,7 @@
 									class="lastCommandIcon" />
 								<CheckBox
 									id="lastSwing"
-									value="{SelDevModel>/lastCommand/Swing}" />
+									selected="{SelDevModel>/lastCommand/swing}" />
 							</l:VerticalLayout>
 						</l:HorizontalLayout>
 					</l:Grid>
@@ -119,9 +119,9 @@
 						<Label
 							text="{i18n>NewCommandToBeSent}" />
 						<StepInput
-							value="24"
-							min="18"
-							max="30"
+							value="{SelDevModel>/newCommand/temperature}"
+							min="{SelDevModel>/minTemperature}"
+							max="{SelDevModel>/maxTemperature}"
 							step="1">
 							<layoutData>
 								<l:GridData
@@ -131,7 +131,7 @@
 						</StepInput>
 						<SegmentedButton
 							id="mode"
-							selectedKey="auto"
+							selectedKey="{SelDevModel>/newCommand/mode}"
 							width="100%"
 							class="segmentedButton">
 							<layoutData>
@@ -158,7 +158,7 @@
 						</SegmentedButton>
 						<SegmentedButton
 							id="fan"
-							selectedKey="auto"
+							selectedKey="{SelDevModel>/newCommand/fan}"
 							width="100%"
 							class="segmentedButton">
 							<layoutData>
@@ -192,7 +192,8 @@
 							</layoutData>
 						</Label>
 						<Switch
-							id="powerful">
+							id="powerful"
+							state="{SelDevModel>/newCommand/powerful}">
 							<layoutData>
 								<l:GridData
 									indent="L0 M0 S0"
@@ -210,7 +211,8 @@
 							</layoutData>
 						</Label>
 						<Switch
-							id="economy">
+							id="economy"
+							state="{SelDevModel>/newCommand/economy}">
 							<layoutData>
 								<l:GridData
 									indent="L0 M0 S0"
@@ -220,6 +222,7 @@
 						<ToggleButton
 							id="stepVane"
 							text="{i18n>StepVane}"
+							pressed="{SelDevModel>/newCommand/stepVane}"
 							class="toggleButton">
 							<layoutData>
 								<l:GridData
@@ -229,6 +232,7 @@
 						<ToggleButton
 							id="swing"
 							text="{i18n>Swing}"
+							pressed="{SelDevModel>/newCommand/swing}"
 							class="toggleButton">
 							<layoutData>
 								<l:GridData
@@ -243,10 +247,12 @@
 							<Button
 								text="{i18n>TurnOff}"
 								type="Reject"
+								press="onTurnOffButtonPressed"
 								class="turnOffButton"/>
 							<Button
 								text="{i18n>TurnOnAndSend}"
 								type="Accept"
+								press="onTurnOnAndSendButtonPressed"
 								class="sendCommandButton"/>
 					</OverflowToolbar>
 				</footer>
