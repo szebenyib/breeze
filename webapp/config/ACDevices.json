@@ -1,9 +1,33 @@
 [{
 	"id": "dev001",
 	"location": "livingroom",
-	"type": "fujitsu"
+	"type": "fujitsu",
+	"minTemperature": 18,
+	"maxTemperature": 30,
+	"default": {
+		"on": true,
+		"temperature": 23,
+		"mode": "auto",
+		"fan": "auto",
+		"eco": false,
+		"powerful": true,
+		"stepVane": false,
+		"swing": false
+	}
 }, {
 	"id": "dev002",
 	"location": "bedroom",
-	"type": "fujitsu"
+	"type": "fujitsu",
+	"minTemperature": 18,
+	"maxTemperature": 30,
+	"default": {
+		"on": true,
+		"temperature": 24,
+		"mode": "auto",
+		"fan": "auto",
+		"eco": false,
+		"powerful": true,
+		"stepVane": false,
+		"swing": false
+	}
 }]
